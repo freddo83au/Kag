@@ -5,7 +5,6 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-
     /* =====================================================
        LIGHT / DARK MODE
        ===================================================== */
@@ -92,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-
     /* =====================================================
        MOBILE NAVIGATION
        ===================================================== */
@@ -103,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const navigation =
         document.getElementById("main-navigation");
 
-
     if (mobileToggle && navigation) {
 
         mobileToggle.addEventListener(
@@ -113,15 +110,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 const isOpen =
                     navigation.classList.toggle("open");
 
-
                 mobileToggle.setAttribute(
                     "aria-expanded",
                     isOpen ? "true" : "false"
                 );
-
             }
         );
-
 
         navigation
             .querySelectorAll("a")
@@ -135,19 +129,14 @@ document.addEventListener("DOMContentLoaded", function () {
                             "open"
                         );
 
-
                         mobileToggle.setAttribute(
                             "aria-expanded",
                             "false"
                         );
-
                     }
                 );
-
             });
-
     }
-
 
 
     /* =====================================================
@@ -157,35 +146,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const header =
         document.getElementById("site-header");
 
-
     function updateHeader() {
 
         if (!header) {
             return;
         }
 
-
         if (window.scrollY > 30) {
-
             header.classList.add("scrolled");
-
         } else {
-
             header.classList.remove("scrolled");
-
         }
-
     }
-
 
     window.addEventListener(
         "scroll",
         updateHeader
     );
 
-
     updateHeader();
-
 
 
     /* =====================================================
@@ -197,7 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "before-after"
         );
 
-
     if (beforeAfter) {
 
         const beforeImage =
@@ -205,34 +183,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 ".before-after-before"
             );
 
-
         const divider =
             beforeAfter.querySelector(
                 ".before-after-divider"
             );
-
 
         const handle =
             beforeAfter.querySelector(
                 ".before-after-handle"
             );
 
-
         let dragging = false;
-
 
         function moveSlider(clientX) {
 
             const rect =
                 beforeAfter.getBoundingClientRect();
 
-
             let position =
                 (
                     (clientX - rect.left) /
                     rect.width
                 ) * 100;
-
 
             position =
                 Math.max(
@@ -243,40 +215,30 @@ document.addEventListener("DOMContentLoaded", function () {
                     )
                 );
 
-
             if (beforeImage) {
 
                 beforeImage.style.width =
                     position + "%";
-
             }
-
 
             if (divider) {
 
                 divider.style.left =
                     position + "%";
-
             }
-
         }
-
 
         function startDrag(event) {
 
             dragging = true;
 
             event.preventDefault();
-
         }
-
 
         function stopDrag() {
 
             dragging = false;
-
         }
-
 
         function drag(event) {
 
@@ -284,9 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-
             let clientX;
-
 
             if (
                 event.touches &&
@@ -300,14 +260,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 clientX =
                     event.clientX;
-
             }
 
-
             moveSlider(clientX);
-
         }
-
 
         if (handle) {
 
@@ -316,7 +272,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 startDrag
             );
 
-
             handle.addEventListener(
                 "touchstart",
                 startDrag,
@@ -324,15 +279,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     passive: false
                 }
             );
-
         }
-
 
         beforeAfter.addEventListener(
             "mousedown",
             startDrag
         );
-
 
         beforeAfter.addEventListener(
             "touchstart",
@@ -342,12 +294,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         );
 
-
         window.addEventListener(
             "mousemove",
             drag
         );
-
 
         window.addEventListener(
             "touchmove",
@@ -357,20 +307,16 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         );
 
-
         window.addEventListener(
             "mouseup",
             stopDrag
         );
 
-
         window.addEventListener(
             "touchend",
             stopDrag
         );
-
     }
-
 
 
     /* =====================================================
@@ -382,7 +328,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "quote-form"
         );
 
-
     if (quoteForm) {
 
         quoteForm.addEventListener(
@@ -391,19 +336,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 event.preventDefault();
 
-
                 alert(
                     "Thanks! Your quote request has been received. We will be in touch shortly."
                 );
 
-
                 quoteForm.reset();
-
             }
         );
-
     }
-
 
 
     /* =====================================================
@@ -415,16 +355,13 @@ document.addEventListener("DOMContentLoaded", function () {
             ".current-year"
         );
 
-
     yearElements.forEach(
         function (element) {
 
             element.textContent =
                 new Date().getFullYear();
-
         }
     );
-
 
 
     /* =====================================================
@@ -436,25 +373,21 @@ document.addEventListener("DOMContentLoaded", function () {
             "main section[id]"
         );
 
-
     const navLinks =
         document.querySelectorAll(
             ".nav-link"
         );
-
 
     function updateActiveNavigation() {
 
         let current =
             "home";
 
-
         sections.forEach(
             function (section) {
 
                 const sectionTop =
                     section.offsetTop - 150;
-
 
                 if (
                     window.scrollY >=
@@ -465,12 +398,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         section.getAttribute(
                             "id"
                         );
-
                 }
-
             }
         );
-
 
         navLinks.forEach(
             function (link) {
@@ -479,12 +409,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     "active"
                 );
 
-
                 const href =
                     link.getAttribute(
                         "href"
                     );
-
 
                 if (
                     href ===
@@ -494,23 +422,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     link.classList.add(
                         "active"
                     );
-
                 }
-
             }
         );
-
     }
-
 
     window.addEventListener(
         "scroll",
         updateActiveNavigation
     );
 
-
     updateActiveNavigation();
-
 
 
     /* =====================================================
@@ -522,7 +444,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "hunter-map"
         );
 
-
     if (
         !mapElement ||
         typeof L === "undefined"
@@ -533,14 +454,17 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         return;
-
     }
-
 
 
     /* =====================================================
        CREATE MAP
        ===================================================== */
+
+    const isMobileMap =
+        window.matchMedia(
+            "(max-width: 850px)"
+        ).matches;
 
     const map =
         L.map(
@@ -548,16 +472,24 @@ document.addEventListener("DOMContentLoaded", function () {
             {
                 scrollWheelZoom: false,
 
-                zoomControl: true
+                zoomControl: !isMobileMap,
+
+                dragging: !isMobileMap,
+
+                touchZoom: !isMobileMap,
+
+                doubleClickZoom: !isMobileMap,
+
+                boxZoom: !isMobileMap,
+
+                keyboard: !isMobileMap
             }
         );
 
 
-    /*
-       Zoom 10.5 gives us a closer view while
-       keeping the main Hunter Valley service
-       area visible.
-    */
+    /* =====================================================
+       DEFAULT MAP POSITION
+       ===================================================== */
 
     map.setView(
         [
@@ -567,6 +499,41 @@ document.addEventListener("DOMContentLoaded", function () {
         9.13
     );
 
+
+    /* =====================================================
+       FINAL MOBILE MAP LOCK
+       ===================================================== */
+
+    if (isMobileMap) {
+
+        map.dragging.disable();
+        map.touchZoom.disable();
+        map.doubleClickZoom.disable();
+        map.boxZoom.disable();
+        map.keyboard.disable();
+        map.scrollWheelZoom.disable();
+
+        /*
+         * Prevent the map from interfering with normal
+         * page scrolling on mobile.
+         */
+        mapElement.style.touchAction =
+            "pan-y";
+
+        /*
+         * Keep the map at its default position.
+         */
+        map.setView(
+            [
+                -33.05,
+                151.63
+            ],
+            9.13,
+            {
+                animate: false
+            }
+        );
+    }
 
 
     /* =====================================================
@@ -582,7 +549,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "&copy; OpenStreetMap contributors"
         }
     ).addTo(map);
-
 
 
     /* =====================================================
@@ -609,9 +575,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     19,
                     48
                 ]
-
         });
-
 
 
     /* =====================================================
@@ -622,77 +586,53 @@ document.addEventListener("DOMContentLoaded", function () {
 
         {
             name: "Kurri Kurri",
-
             lat: -32.82,
-
             lng: 151.48
         },
 
-
         {
             name: "Maitland",
-
             lat: -32.73,
-
             lng: 151.56
         },
 
-
         {
             name: "Cessnock",
-
             lat: -32.83,
-
             lng: 151.36
         },
 
-
         {
             name: "Singleton",
-
             lat: -32.57,
-
             lng: 151.18
         },
 
-
         {
             name: "Pokolbin",
-
             lat: -32.80,
-
             lng: 151.28
         },
 
-
         {
             name: "Newcastle",
-
             lat: -32.93,
-
             lng: 151.78
         },
 
-
         {
             name: "Lake Macquarie",
-
             lat: -33.08,
-
             lng: 151.60
         },
 
-
         {
             name: "Port Stephens",
-
             lat: -32.72,
-
             lng: 152.10
         }
 
     ];
-
 
 
     /* =====================================================
@@ -702,14 +642,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const markers = {};
 
 
-
     /* =====================================================
        CREATE MAP MARKERS
        ===================================================== */
 
     locations.forEach(
         function (location) {
-
 
             const marker =
                 L.marker(
@@ -723,17 +661,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 )
                 .addTo(map);
 
-
-
             const key =
                 location.name
                     .toLowerCase()
                     .trim();
 
-
             markers[key] =
                 marker;
-
 
 
             /* =============================================
@@ -749,7 +683,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 location.name
 
             );
-
 
 
             /* =============================================
@@ -776,7 +709,6 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-
             /* =============================================
                PIN HOVER IN
                ============================================= */
@@ -788,30 +720,21 @@ document.addEventListener("DOMContentLoaded", function () {
                     const pin =
                         marker.getElement();
 
-
                     if (!pin) {
                         return;
                     }
-
 
                     const graphic =
                         pin.querySelector(
                             ".map-pin"
                         );
 
-
                     if (graphic) {
 
                         graphic.classList.add(
                             "map-pin-active"
                         );
-
                     }
-
-
-                    /*
-                       Find matching white label.
-                    */
 
                     highlightAreaLabel(
                         location.name,
@@ -820,7 +743,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 }
             );
-
 
 
             /* =============================================
@@ -834,7 +756,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     const pin =
                         marker.getElement();
 
-
                     if (pin) {
 
                         const graphic =
@@ -842,17 +763,13 @@ document.addEventListener("DOMContentLoaded", function () {
                                 ".map-pin"
                             );
 
-
                         if (graphic) {
 
                             graphic.classList.remove(
                                 "map-pin-active"
                             );
-
                         }
-
                     }
-
 
                     highlightAreaLabel(
                         location.name,
@@ -864,7 +781,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
     );
-
 
 
     /* =====================================================
@@ -881,7 +797,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 ".map-area-list span"
             );
 
-
         labels.forEach(
             function (label) {
 
@@ -890,7 +805,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         .replace("✓", "")
                         .trim()
                         .toLowerCase();
-
 
                 if (
                     labelName ===
@@ -908,16 +822,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         label.classList.remove(
                             "map-area-active"
                         );
-
                     }
-
                 }
 
             }
         );
-
     }
-
 
 
     /* =====================================================
@@ -929,10 +839,8 @@ document.addEventListener("DOMContentLoaded", function () {
             ".map-area-list span"
         );
 
-
     areaLabels.forEach(
         function (label) {
-
 
             const areaName =
                 label.textContent
@@ -940,15 +848,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     .trim()
                     .toLowerCase();
 
-
             const marker =
                 markers[areaName];
-
 
             if (!marker) {
                 return;
             }
-
 
 
             /* =============================================
@@ -959,23 +864,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 "mouseenter",
                 function () {
 
-
-                    /*
-                       Highlight the entire box.
-                    */
-
                     label.classList.add(
                         "map-area-active"
                     );
 
-
-                    /*
-                       Highlight matching pin.
-                    */
-
                     const pin =
                         marker.getElement();
-
 
                     if (pin) {
 
@@ -984,27 +878,18 @@ document.addEventListener("DOMContentLoaded", function () {
                                 ".map-pin"
                             );
 
-
                         if (graphic) {
 
                             graphic.classList.add(
                                 "map-pin-active"
                             );
-
                         }
-
                     }
-
-
-                    /*
-                       Show tooltip.
-                    */
 
                     marker.openTooltip();
 
                 }
             );
-
 
 
             /* =============================================
@@ -1015,15 +900,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 "mouseleave",
                 function () {
 
-
                     label.classList.remove(
                         "map-area-active"
                     );
 
-
                     const pin =
                         marker.getElement();
-
 
                     if (pin) {
 
@@ -1032,23 +914,18 @@ document.addEventListener("DOMContentLoaded", function () {
                                 ".map-pin"
                             );
 
-
                         if (graphic) {
 
                             graphic.classList.remove(
                                 "map-pin-active"
                             );
-
                         }
-
                     }
-
 
                     marker.closeTooltip();
 
                 }
             );
-
 
 
             /* =============================================
@@ -1059,33 +936,33 @@ document.addEventListener("DOMContentLoaded", function () {
                 "click",
                 function () {
 
-
-                    /*
-                       Open matching popup.
-                    */
-
                     marker.openPopup();
 
-
                     /*
-                       Move map toward location.
-                    */
+                     * Desktop:
+                     * move the map to the selected area.
+                     *
+                     * Mobile:
+                     * leave the map locked at its default
+                     * Hunter Valley position.
+                     */
 
-                    map.panTo(
-                        marker.getLatLng(),
-                        {
-                            animate: true,
+                    if (!isMobileMap) {
 
-                            duration: .5
-                        }
-                    );
+                        map.panTo(
+                            marker.getLatLng(),
+                            {
+                                animate: true,
+                                duration: .5
+                            }
+                        );
+                    }
 
                 }
             );
 
         }
     );
-
 
 
     /* =====================================================

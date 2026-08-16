@@ -3875,3 +3875,201 @@ body.dark-mode .encapsulation-features > div {
         background: #ffffff !important;
     }
 }
+/* =========================================================
+   FINAL MAP / QUOTE MOBILE LAYOUT
+   =========================================================
+   This section intentionally comes LAST so it overrides all
+   earlier mobile map rules in this stylesheet.
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    /*
+     * The map is a fixed-height block in the page.
+     * It is NOT a 1050px absolute section anymore.
+     */
+    .areas-map {
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    /*
+     * Mobile map.
+     * Keeping this in normal document flow prevents the map
+     * from sitting underneath/behind the quote form.
+     */
+    #hunter-map {
+        position: relative !important;
+        inset: auto !important;
+        display: block !important;
+        width: 100% !important;
+        height: 560px !important;
+        min-height: 560px !important;
+        margin: 0 !important;
+        z-index: 1 !important;
+    }
+
+    #hunter-map .leaflet-container {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    /*
+     * Information that sits ON TOP of the map.
+     */
+    .map-overlay {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 560px !important;
+        inset-block-end: auto !important;
+        z-index: 400 !important;
+        pointer-events: none !important;
+    }
+
+    .map-overlay .container {
+        padding-top: 25px !important;
+    }
+
+    .map-heading {
+        width: 92% !important;
+        max-width: 430px !important;
+        margin: 0 auto !important;
+    }
+
+    .map-area-list {
+        width: 92% !important;
+        max-width: 430px !important;
+        margin: 10px auto 0 !important;
+    }
+
+    /*
+     * QUOTE / CONTACT CARD
+     *
+     * This is the important fix:
+     * the card is removed from absolute positioning and
+     * placed AFTER the map in normal document flow.
+     */
+    .map-quote-card {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+
+        display: block !important;
+        width: calc(100% - 30px) !important;
+        max-width: 500px !important;
+
+        margin: 30px auto 45px !important;
+        padding: 24px !important;
+
+        z-index: 600 !important;
+    }
+
+    .map-quote-card .form-row {
+        grid-template-columns: 1fr !important;
+    }
+
+    /*
+     * Do not allow Leaflet's map controls to become part
+     * of the page's scrolling/panning behaviour.
+     */
+    #hunter-map .leaflet-container {
+        overscroll-behavior: contain !important;
+    }
+
+    #hunter-map .leaflet-pane,
+    #hunter-map .leaflet-tile-pane,
+    #hunter-map .leaflet-overlay-pane,
+    #hunter-map .leaflet-shadow-pane,
+    #hunter-map .leaflet-marker-pane,
+    #hunter-map .leaflet-tooltip-pane,
+    #hunter-map .leaflet-popup-pane {
+        max-width: none !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    #hunter-map {
+        height: 520px !important;
+        min-height: 520px !important;
+    }
+
+    .map-overlay {
+        height: 520px !important;
+    }
+
+    .map-heading {
+        width: calc(100% - 24px) !important;
+        padding: 20px !important;
+    }
+
+    .map-heading h2 {
+        font-size: 30px !important;
+    }
+
+    .map-area-list {
+        width: calc(100% - 24px) !important;
+        grid-template-columns: 1fr !important;
+        margin-top: 10px !important;
+    }
+
+    .map-quote-card {
+        width: calc(100% - 24px) !important;
+        margin: 25px auto 40px !important;
+        padding: 22px !important;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    #hunter-map {
+        height: 500px !important;
+        min-height: 500px !important;
+    }
+
+    .map-overlay {
+        height: 500px !important;
+    }
+
+    .map-heading h2 {
+        font-size: 26px !important;
+    }
+
+    .map-quote-card {
+        width: calc(100% - 20px) !important;
+        margin-top: 22px !important;
+        padding: 18px !important;
+    }
+}
+
+
+/* =========================================================
+   FINAL MAP POSITION / TOUCH SAFETY
+   =========================================================
+   The JavaScript map initialisation also disables Leaflet
+   dragging and touch zoom on mobile. These CSS rules make
+   sure browser overscroll does not propagate through the
+   map container.
+   ========================================================= */
+
+#hunter-map,
+#hunter-map .leaflet-container {
+    overscroll-behavior: contain;
+}
