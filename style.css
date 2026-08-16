@@ -3775,3 +3775,53 @@ body.dark-mode .encapsulation-features > div {
         font-size: 14px;
     }
 }
+/* =========================================================
+   MOBILE MENU — DARK MODE FIX
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    /* LIGHT MODE */
+    .main-navigation {
+        background: #ffffff !important;
+        border: 1px solid #dfe7ed;
+    }
+
+    .main-navigation .nav-link {
+        color: #102f55 !important;
+    }
+
+    .main-navigation .nav-link:hover,
+    .main-navigation .nav-link.active {
+        color: #5fa421 !important;
+    }
+
+    .main-navigation .nav-link::after {
+        background: #79bd32 !important;
+    }
+
+    /* DARK MODE */
+    body.dark-mode .main-navigation {
+        background: #102f55 !important;
+        border: 1px solid #294963 !important;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
+    }
+
+    body.dark-mode .main-navigation .nav-link {
+        color: #ffffff !important;
+    }
+
+    body.dark-mode .main-navigation .nav-link:hover,
+    body.dark-mode .main-navigation .nav-link.active {
+        color: #9bd85d !important;
+    }
+
+    body.dark-mode .main-navigation .nav-link::after {
+        background: #79bd32 !important;
+    }
+
+    /* DARK MODE HAMBURGER */
+    body.dark-mode .mobile-toggle span {
+        background: #ffffff !important;
+    }
+}
