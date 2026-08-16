@@ -4073,3 +4073,8 @@ body.dark-mode .encapsulation-features > div {
 #hunter-map .leaflet-container {
     overscroll-behavior: contain;
 }
+@media (max-width: 850px) {
+    .map-quote-card {
+        margin-top: 40px !important;
+    }
+}
